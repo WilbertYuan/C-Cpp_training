@@ -1,0 +1,23 @@
+﻿  test_2.cpp
+C:\Users\17193\source\repos\test_4_8\test_2.cpp(96,7): error C2512: “Time”: 没有合适的默认构造函数可用
+  C:\Users\17193\source\repos\test_4_8\test_2.cpp(21,7):
+  参见“Time”的声明
+  
+C:\Users\17193\source\repos\test_4_8\test_2.cpp(99,12): error C2248: “Time::Hour”: 无法访问 private 成员(在“Time”类中声明)
+  C:\Users\17193\source\repos\test_4_8\test_2.cpp(24,6):
+  参见“Time::Hour”的声明
+  C:\Users\17193\source\repos\test_4_8\test_2.cpp(21,7):
+  参见“Time”的声明
+  
+C:\Users\17193\source\repos\test_4_8\test_2.cpp(99,30): error C2248: “Time::Minute”: 无法访问 private 成员(在“Time”类中声明)
+  C:\Users\17193\source\repos\test_4_8\test_2.cpp(24,11):
+  参见“Time::Minute”的声明
+  C:\Users\17193\source\repos\test_4_8\test_2.cpp(21,7):
+  参见“Time”的声明
+  
+C:\Users\17193\source\repos\test_4_8\test_2.cpp(99,50): error C2248: “Time::Second”: 无法访问 private 成员(在“Time”类中声明)
+  C:\Users\17193\source\repos\test_4_8\test_2.cpp(24,18):
+  参见“Time::Second”的声明
+  C:\Users\17193\source\repos\test_4_8\test_2.cpp(21,7):
+  参见“Time”的声明
+  
