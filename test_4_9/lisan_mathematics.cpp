@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-
 int main() 
 {
     char f[100];
@@ -22,7 +21,7 @@ int main()
         char name = '0';
         int place = '-1';
         int tre = 1;
-        int* ptr = new int[100];
+        unsigned int* ptr = new unsigned int[1025];
     }Propfull;
 
 
@@ -152,10 +151,10 @@ int main()
         }
     }
     // allocating true lists initially
-    int** p = new int* [propnum];
+    unsigned int** p = new unsigned int* [propnum];
     for (int i = 0; i < propnum; i++)
     {
-        *(p + i) = new int[int(pow(2.0, propnum))];
+        *(p + i) = new unsigned int[int(pow(2.0, propnum))];
         int flag = 1;
         for (int jk = 0; jk<int(pow(2.0, i + 1)); jk++)
         {
@@ -182,8 +181,6 @@ int main()
         }
     }
 
-
-
     //scaning proparrf to delete !
     for (int i = 0; i < propnumf; i++)
     {
@@ -192,14 +189,16 @@ int main()
             f[proparrf[i].place - 1] = '0';
             for (int j = 0; j<int(pow(2.0, propnum)); j++)
             {
-                *(proparrf[i].ptr + j) = ~(*(proparrf[i].ptr + j));
+                *(proparrf[i].ptr + j) = ~(*(proparrf[i].ptr + j))+2;
             }
         }
     }
     
     // & | > - calculating
+    int final = 0;
     for (int i = 0; i < relationnum; i++)
     {
+        //printf("k\n");
         int max = 0,maxplace,maxid;
         for (int j = 0; j < relationnum; j++)
         {
@@ -221,13 +220,169 @@ int main()
             right++;
         }
         // 4.9 接下来该写left与right做运算，在此之前需要调用到proparrf
+        int pre, lat;
+        for (int j = 0; j < propnumf; j++)
+        {
+            if (proparrf[j].place == left)
+            {
+                pre = j;
+            }
+            else if (proparrf[j].place == right)
+            {
+                lat = j;
+            }
+        }
+        final = pre;
+        //calculating
+        if (relationarr[maxid].name == '&')
+        {
+            for (int k = 0; k<int(pow(2.0, propnum)); k++)
+            {
+                *(proparrf[pre].ptr + k) = (*(proparrf[pre].ptr + k))&(*(proparrf[lat].ptr + k)); //p&q
+            }
+            f[right] = '0';
+            f[maxplace] = '0';
+        }
+        else if (relationarr[maxid].name == '|')
+        {
+            for (int k = 0; k<int(pow(2.0, propnum)); k++)
+            {
+                *(proparrf[pre].ptr + k) = (*(proparrf[pre].ptr + k)) | (*(proparrf[lat].ptr + k)); //p|q
+            }
+            f[right] = '0';
+            f[maxplace] = '0';
+        }
+        else if (relationarr[maxid].name == '>')
+        {
+            for (int k = 0; k<int(pow(2.0, propnum)); k++)
+            {
+                //printf("%d", ~(*(proparrf[lat].ptr + k))+2);
+                *(proparrf[pre].ptr + k) = (~(*(proparrf[pre].ptr + k))+2) | (*(proparrf[lat].ptr + k)); //!p|q
+                //printf("%d\n", *(proparrf[lat].ptr + k));
+            }
+            f[right] = '0';
+            f[maxplace] = '0';
+        }
+        else if (relationarr[maxid].name == '-')
+        {
+            for (int k = 0; k<int(pow(2.0, propnum)); k++)
+            {
+                *(proparrf[pre].ptr + k) = ((~(*(proparrf[pre].ptr + k))+2) | (*(proparrf[lat].ptr + k))) & ((~(*(proparrf[lat].ptr + k)) + 2) | (*(proparrf[pre].ptr + k))); //(!p|q)&(!q|p)
+            }
+            f[right] = '0';
+            f[maxplace] = '0';
+        }
     }
 
-    // f[] test
-    for (int i = 0; i < fnum-1; i++)
+    printf("\n");
+    for (int i = 0; i < propnum; i++)
     {
-        printf("%c", f[i]);
+        printf("%c\t", proparr[i].name);
     }
+    printf("OUTPUT\n\n");
+    for (int i = 0; i < int(pow(2.0, propnum)); i++)
+    {
+        for (int j = 0; j < propnum; j++)
+        {
+            if (*(*(p + j) + i))
+            {
+                printf("T\t");
+            }
+            else
+            {
+                printf("F\t");
+            }
+        }
+        if (*(proparrf[final].ptr + i))
+        {
+            printf("T\t\n");
+        }
+        else
+        {
+            printf("F\t\n");
+        }
+    }
+
+    //zhuxiqu zhuhequ
+    printf("\n\n");
+    printf("主析取范式：\n");
+    int flag2 = 0;
+    for (int i = 0; i<int(pow(2.0, propnum)); i++)
+    {
+        if (*(proparrf[final].ptr + i) == 1)
+        {
+            if (!flag2)
+            {
+                flag2++;
+            }
+            else
+            {
+                printf("|");
+            }
+            printf("(");
+            for (int j = 0; j < propnum-1; j++)
+            {
+                if (*(*(p + j) + i) != 1)
+                {
+                    printf("!");
+                }
+                printf("%c", proparr[j].name);
+                printf("&");
+            }
+            if (*(*(p + propnum-1) + i) != 1)
+            {
+                printf("!");
+            }
+            printf("%c", proparr[propnum-1].name);
+            printf(")");
+        }
+    }
+
+    printf("\n\n");
+    printf("主合取范式：\n");
+    int flag3 = 0;
+    for (int i = 0; i<int(pow(2.0, propnum)); i++)
+    {
+        if (*(proparrf[final].ptr + i) == 0)
+        {
+            if (!flag3)
+            {
+                flag3++;
+            }
+            else
+            {
+                printf("&");
+            }
+            printf("(");
+            for (int j = 0; j < propnum - 1; j++)
+            {
+                if (*(*(p + j) + i) != 0)
+                {
+                    printf("!");
+                }
+                printf("%c", proparr[j].name);
+                printf("|");
+            }
+            if (*(*(p + propnum - 1) + i) != 0)
+            {
+                printf("!");
+            }
+            printf("%c", proparr[propnum - 1].name);
+            printf(")");
+        }
+    }
+
+    //print the final true list
+    /*for (int i = 0; i < int(pow(2.0, propnum)); i++)
+    {
+        printf("%d", *(proparrf[final].ptr + i));
+    }*/
+
+    // f[] test
+    //for (int i = 0; i < fnum-1; i++)
+    //{
+    //    printf("%c", f[i]);
+    //}
 
     
 
