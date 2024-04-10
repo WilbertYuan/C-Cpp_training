@@ -1,0 +1,7 @@
+﻿  test.cpp
+C:\Users\17193\source\repos\test_4_10\test.cpp(28,98): warning C4244: “参数”: 从“_Rep”转换到“unsigned int”，可能丢失数据
+C:\Users\17193\source\repos\test_4_10\test.cpp(28,98): warning C4244:         with
+C:\Users\17193\source\repos\test_4_10\test.cpp(28,98): warning C4244:         [
+C:\Users\17193\source\repos\test_4_10\test.cpp(28,98): warning C4244:             _Rep=std::chrono::system_clock::rep
+C:\Users\17193\source\repos\test_4_10\test.cpp(28,98): warning C4244:         ]
+  test_4_10.vcxproj -> C:\Users\17193\source\repos\test_4_10\x64\Debug\test_4_10.exe
