@@ -15,7 +15,7 @@ int main()
 		cin >> num;
 		if (!num)
 		{
-			cout << endl << "不满足自反性" << endl << "满足反自反性" << endl << "满足对称性" << endl << "满足反对称性" << endl;
+			cout << endl << "不满足自反性" << endl << "满足反自反性" << endl << "满足对称性" << endl << "满足反对称性" << endl << "满足传递性" << endl;
 		}
 		else
 		{
@@ -107,6 +107,30 @@ int main()
 				}
 			}
 			if (flag4) cout << "满足反对称性" << endl;
+
+			int flag5 = 1;
+			for (int i = 0; i < num; i++)
+			{
+				if (flag5)
+				{
+					for (int j = 0; j < num; j++)
+					{
+						if (flag5)
+						{
+							for (int k = 0; k < num; k++)
+							{
+								if ((*(*(p + i) + j) == 1) && (*(*(p + j) + k) == 1) && (*(*(p + k) + i) == 0))
+								{
+									cout << "不满足传递性" << endl;
+									flag5 = 0;
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+			if (flag5) cout << "满足传递性" << endl;
 
 			for (int i = 0; i < num; i++)
 			{
