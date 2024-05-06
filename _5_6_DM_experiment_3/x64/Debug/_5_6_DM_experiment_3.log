@@ -1,0 +1,6 @@
+﻿  exp_3.cpp
+C:\Users\17193\source\repos\_5_6_DM_experiment_3\exp_3.cpp(71,22): warning C4244: “参数”: 从“__int64”转换到“long”，可能丢失数据
+C:\Users\17193\source\repos\_5_6_DM_experiment_3\exp_3.cpp(71,18): warning C4244: “参数”: 从“__int64”转换到“long”，可能丢失数据
+C:\Users\17193\source\repos\_5_6_DM_experiment_3\exp_3.cpp(71,44): warning C4244: “参数”: 从“__int64”转换到“long”，可能丢失数据
+C:\Users\17193\source\repos\_5_6_DM_experiment_3\exp_3.cpp(71,40): warning C4244: “参数”: 从“__int64”转换到“long”，可能丢失数据
+  _5_6_DM_experiment_3.vcxproj -> C:\Users\17193\source\repos\_5_6_DM_experiment_3\x64\Debug\_5_6_DM_experiment_3.exe
