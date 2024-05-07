@@ -33,7 +33,7 @@ int main()
 	n = num;
 	if (Is(num))
 	{
-		printf("<1,%lld>\nÊÇÓĞ²¹¸ñ\n", num);
+		printf("<1,%lld>\næ˜¯æœ‰è¡¥æ ¼\n", num);
 		return 0;
 	}
 	for (long long i = 1; i <= num; i++)
@@ -60,11 +60,11 @@ int main()
 	arr.push_back(num);
 	if (arrab[arrab.size() - 1] != num) arrab.push_back(num);
 
-	printf("\nÆ«Ğò¹ØÏµÈçÏÂ£º\n\n");
+	printf("\nååºå…³ç³»å¦‚ä¸‹ï¼š\n\n");
 	for (vector<long long>::iterator p = son.begin(); p != son.end(); p++)
 	{
 		int flag2 = 0;
-		for (vector<long long>::iterator j = p; j != son.end(); j++)
+		for (vector<long long>::iterator j = son.begin(); j != son.end(); j++)
 		{
 			if ((find(arrab.begin(),arrab.end(),(*j)/(*p)) != arrab.end()) && (!((*j) % (*p))) && (j != p))
 				printf("<%lld,%lld>\t", *p,*j);
@@ -86,19 +86,19 @@ int main()
 
 	if (!final)
 	{
-		printf("²»ÊÇÓĞ²¹¸ñ£¬");
-		for (vector<long long>::iterator p = none.begin(); p + 1 != none.end(); p++)
+		printf("ä¸æ˜¯æœ‰è¡¥æ ¼ï¼Œ");
+		for (vector<long long>::iterator p = none.begin(); p != none.end(); p++)
 		{
 			printf("%lld", *p);
-			if (!(p + 2 == none.end()))
-				printf("¡¢");
+			if (p + 1 != none.end())
+				printf("ã€");
 		}
-		printf("Ã»ÓĞ²¹Ôª\n");
-		printf("\"-#-\"±íÊÇÃ»ÓĞ²¹ÔªµÄÔªËØËùÔÚĞĞ\n");
+		printf("æ²¡æœ‰è¡¥å…ƒ\n");
+		printf("\"-#-\"è¡¨æ˜¯æ²¡æœ‰è¡¥å…ƒçš„å…ƒç´ æ‰€åœ¨è¡Œ\n");
 	}
 	else
 	{
-		printf("ÊÇÓĞ²¹¸ñ\n");
+		printf("æ˜¯æœ‰è¡¥æ ¼\n");
 	}
 	return 0;
 }
