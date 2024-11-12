@@ -1,0 +1,3 @@
+﻿  problem_1.c
+C:\Users\17193\source\repos\DataStructure_11_12\problem_1.c(99,6): warning C4101: “i”: 未引用的局部变量
+  DataStructure_11_12.vcxproj -> C:\Users\17193\source\repos\DataStructure_11_12\x64\Debug\DataStructureExp3_11_12.exe
