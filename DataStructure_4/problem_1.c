@@ -213,7 +213,7 @@ int main() {
     for (i = 0; i < 6; i++) {
         fprintf(fp, "%s", names[i]);
         for (j = 0; j < 4; j++) {
-            fprintf(fp, ",%.4lf", timeTaken[i][j]);
+            fprintf(fp, ",%.3lf", timeTaken[i][j]);
         }
         fprintf(fp, "\n");
     }
