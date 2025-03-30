@@ -1,7 +1,6 @@
 #include "SortableList.h"
 #include <cmath>
 
-// 插入排序：用于对子序列进行排序，适用于小规模数据
 void SortableList::InsertSort(int left, int right) {
     for (int i = left + 1; i <= right; i++) {
         int key = l[i];
@@ -13,8 +12,6 @@ void SortableList::InsertSort(int left, int right) {
         l[j + 1] = key;
     }
 }
-
-// 快速选择：寻找第 k 小元素的下标，参数r默认为5（五元分组）
 int SortableList::Select(int k, int left, int right, int r) {
     int n = right - left + 1;
     if (n <= r) { 

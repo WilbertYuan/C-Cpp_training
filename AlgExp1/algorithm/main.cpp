@@ -44,7 +44,8 @@ int main() {
     cout << "第 " << k << " 小的元素的下标为: " << index << endl;
     auto durationSelect = duration_cast<nanoseconds>(end - start).count();
 
-    // 追加结果到 CSV 文件
+
+    
     ofstream csvFile("Project/result/sorting_results.csv", ios::app);
 
     // static bool firstTime = true;
@@ -52,8 +53,6 @@ int main() {
     //     csvFile << "Data Size, Merge Sort Time (ns), Quick Sort Time (ns), Select Time (ns)\n";
     //     firstTime = false;
     // }
-
-    // 写入数据
     csvFile << size << "," << durationMerge << "," << durationQuick << "," << durationSelect << "\n";  // 选择算法时间可扩展
 
     csvFile.close();
